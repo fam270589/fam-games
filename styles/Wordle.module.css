@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.back {
+  margin-bottom: 0.5rem;
+}
+
+.back:hover {
+  color: blueviolet;
+}
