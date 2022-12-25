@@ -24,3 +24,10 @@
 #default {
   background:  transparent;
 }
+
+@media (min-width: 640px) {
+	.letter {
+		width: 3.7rem;
+		height: 3.7rem;
+	}
+}

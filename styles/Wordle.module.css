@@ -42,12 +42,3 @@
 .reset:hover {
 	background: white;
 }
-
-@media (min-width: 960px) {
-	.gameGrid {
-		gap: 1rem;
-	}
-	.reset {
-		margin-top: 3.5rem;
-	}
-}
