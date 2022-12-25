@@ -9,11 +9,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 .key:hover {
-  background-color: #fff;
+	background-color: #fff;
 }
 
 .word {
@@ -30,5 +30,19 @@
 }
 
 .word:hover {
-  font-weight: bold;
+	font-size: 0.8rem;
+}
+
+.disabled {
+	background: #555;
+	border-radius: 0.2rem;
+	color: #222;
+	width: 1.5rem;
+	height: 2rem;
+	margin: 0.57rem 0.2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.9rem;
 }

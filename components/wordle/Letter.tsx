@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { WordleContext } from "../../pages/wordle";
 import styles from "./Letter.module.css";
 
@@ -11,10 +11,40 @@ type Props = {
 
 //todo:-----Letter component-----://
 const Letter = ({ attempVal, letterPos }: Props) => {
-  const wordleCtx = useContext(WordleContext);
-	const letter = wordleCtx.board[attempVal][letterPos];
+	const {
+		board,
+		correctWord,
+		currAttempt,
+		disabledLetters,
+		setDisabledLetters,
+	} = useContext(WordleContext);
+	const letter = board[attempVal][letterPos];
 
-	return <div className={styles.letter}>{letter}</div>;
+	const correct = correctWord[letterPos] === letter;
+	const almost = !correct && letter !== "" && correctWord.includes(letter);
+
+	const letterState =
+		currAttempt.attempt > attempVal
+			? correct
+				? styles.correct
+				: almost
+				? styles.almost
+				: styles.error
+			: styles.default;
+
+	useEffect(() => {
+		if (letter !== "" && !correct && !almost) {
+			setDisabledLetters((prevState) => [...prevState, letter]);
+		}
+
+		return () => {};
+	}, [currAttempt.attempt]);
+
+	return (
+		<div className={styles.letter} id={letterState}>
+			{letter}
+		</div>
+	);
 };
 
 export default Letter;

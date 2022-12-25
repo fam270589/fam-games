@@ -8,4 +8,20 @@ export type ContextType = {
 			letterPos: number;
 		}>
 	>;
+	onSelectLetter: (keyVal: string) => void;
+	onDelete: () => void;
+	onEnter: () => void;
+	correctWord: string;
+	disabledLetters: string[];
+	setDisabledLetters: React.Dispatch<React.SetStateAction<string[]>>;
+	gameOver: {
+		gameOver: boolean;
+		guessedWord: boolean;
+	};
+	setGameOver: React.Dispatch<
+		React.SetStateAction<{
+			gameOver: boolean;
+			guessedWord: boolean;
+		}>
+	>;
 };

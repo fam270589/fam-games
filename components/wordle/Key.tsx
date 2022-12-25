@@ -6,53 +6,32 @@ type Props = {
 	children?: React.ReactNode;
 	// props....
 	keyVal: string;
+	disabled?: boolean;
 };
 
 //todo:-----Key component-----://
-const Key = ({ keyVal }: Props) => {
-	const { board, setBoard, currAttempt, setCurrAttempt } =
-		useContext(WordleContext);
+const Key = ({ keyVal, disabled }: Props) => {
+	const { onSelectLetter, onDelete, onEnter } = useContext(WordleContext);
 
 	const selectLetter = () => {
 		if (keyVal === "ENTER") {
-			if (currAttempt.letterPos !== 5) return;
-
-			if (setCurrAttempt) {
-				setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
-			}
+			onEnter();
 		} else if (keyVal === "DELETE") {
-			if (currAttempt.letterPos === 0) return;
-
-			const newBoard = [...board];
-			newBoard[currAttempt.attempt][currAttempt.letterPos - 1] = "";
-
-			if (setBoard) setBoard(newBoard);
-			if (setCurrAttempt) {
-				setCurrAttempt({
-					...currAttempt,
-					letterPos: currAttempt.letterPos - 1,
-				});
-			}
+			onDelete();
 		} else {
-			if (currAttempt.letterPos > 4) return;
-
-			const newBoard = [...board];
-			newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
-
-			if (keyVal.length > 1) return; // if Enter or Delete
-			if (setBoard) setBoard(newBoard);
-			if (setCurrAttempt) {
-				setCurrAttempt({
-					...currAttempt,
-					letterPos: currAttempt.letterPos + 1,
-				});
-			}
+			onSelectLetter(keyVal);
 		}
 	};
 
 	return (
 		<div
-			className={keyVal.length > 1 ? styles.word : styles.key}
+			className={
+				keyVal.length > 1
+					? styles.word
+					: disabled
+					? styles.disabled
+					: styles.key
+			}
 			onClick={selectLetter}
 		>
 			{keyVal}
