@@ -1,0 +1,34 @@
+.key {
+	border-radius: 0.2rem;
+	background-color: #ccc;
+	color: #222;
+	width: 1.5rem;
+	height: 2rem;
+	margin: 0.57rem 0.2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  font-size: 0.9rem;
+}
+
+.key:hover {
+  background-color: #fff;
+}
+
+.word {
+	border-radius: 0.2rem;
+	background-color: #aaa;
+	color: #222;
+	margin: 0.57rem 0.3rem;
+	width: 3rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.7rem;
+}
+
+.word:hover {
+  font-weight: bold;
+}
